@@ -1,19 +1,20 @@
-
 import OceanBackground from './components/OceanBackground';
 import Hero from './components/Hero';
 import SpecGenerator from './components/SpecGenerator';
 import ChatWidget from './components/ChatWidget';
+import Philosophy from './components/Philosophy';
+import Services from './components/Services';
 
 function App() {
     return (
-        <div className="min-h-screen text-slate-200 selection:bg-neon-cyan selection:text-ocean-950">
+        <div className="min-h-screen text-slate-200 selection:bg-neon-cyan selection:text-ocean-950 font-sans">
 
-            {/* 1. Глобальный фон (Canvas) */}
+            {/* Глобальный фон */}
             <OceanBackground />
 
-            {/* 2. Навигация */}
-            <nav className="fixed top-0 left-0 w-full z-40 px-6 py-4 flex justify-between items-center bg-ocean-950/50 backdrop-blur-md border-b border-white/5">
-                <div className="text-xl font-bold tracking-widest text-white flex items-center gap-2">
+            {/* Навигация */}
+            <nav className="fixed top-0 left-0 w-full z-40 px-6 py-4 flex justify-between items-center bg-ocean-950/80 backdrop-blur-md border-b border-white/5 transition-all">
+                <div className="text-xl font-bold tracking-widest text-white flex items-center gap-2 select-none cursor-pointer">
                     CACHALOT<span className="text-neon-cyan">.</span>
                 </div>
                 <div className="hidden md:flex gap-8 text-sm font-medium text-slate-400">
@@ -21,29 +22,24 @@ function App() {
                     <a href="#services" className="hover:text-neon-cyan transition-colors">Услуги</a>
                     <a href="#cases" className="hover:text-neon-cyan transition-colors">Кейсы</a>
                 </div>
-                <button className="px-4 py-2 text-xs font-bold bg-white text-ocean-950 rounded hover:bg-neon-cyan transition-colors">
+                <button className="px-5 py-2 text-xs font-bold bg-white text-ocean-950 rounded hover:bg-neon-cyan transition-colors">
                     Связаться
                 </button>
             </nav>
 
             <main className="relative z-10">
                 <Hero />
+                <Philosophy />
+                <Services />
 
-                {/* Блок-заглушка для Кейсов (сделаем следующим шагом) */}
-                <section className="py-20 bg-ocean-900/50 border-t border-white/5 text-center">
-                    <p className="text-slate-500 font-mono">[ Здесь будет блок "Модули и Кейсы" ]</p>
+                {/* Блок-заглушка для Кейсов (Следующий этап) */}
+                <section id="cases" className="py-20 border-t border-white/5 text-center">
+                    <p className="text-slate-500 font-mono">[ Здесь будет блок "Кейсы" ]</p>
                 </section>
 
-                {/* Твой Генератор ТЗ */}
-                <section className="py-24 relative overflow-hidden">
-                    {/* Фоновое пятно */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-blue-600/10 rounded-full blur-[100px] -z-10"></div>
-
-                    <div className="relative z-10 max-w-7xl mx-auto px-4">
-                        <div className="text-center mb-12">
-                            <h2 className="text-3xl font-bold text-white mb-2">Архитектор Идей</h2>
-                            <p className="text-slate-400">Опишите задачу, и AI составит технический план.</p>
-                        </div>
+                {/* Генератор ТЗ */}
+                <section className="py-24 relative">
+                    <div className="max-w-7xl mx-auto px-4">
                         <SpecGenerator />
                     </div>
                 </section>
@@ -55,7 +51,6 @@ function App() {
             </footer>
 
             <ChatWidget />
-
         </div>
     );
 }
