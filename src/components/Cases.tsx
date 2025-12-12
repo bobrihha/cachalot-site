@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ExternalLink, ArrowRight, Server, MessageSquare, BarChart3, Globe } from 'lucide-react';
+import { X, ExternalLink, ArrowRight, Server, MessageSquare, BarChart3, Globe, Database } from 'lucide-react';
 
-// Данные кейсов (из ТЗ)
+// Данные кейсов
 const cases = [
     {
         id: 1,
@@ -18,7 +18,7 @@ const cases = [
         title: "Cachalot Assistant",
         category: "AI Development",
         description: "Цифровой сотрудник, работающий прямо на этом сайте. Демонстрация технологии «Сапожник с сапогами».",
-        tags: ["OpenAI API", "React", "Voice Recognition"],
+        tags: ["Gemini 2.0", "React", "Voice Recognition"],
         details: "Бот интегрирован в frontend сайта и связан с Python-бэкендом. Умеет вести диалог по сценарию, отвечать на свободные вопросы о компании и собирать контакты. Поддерживает голосовой ввод.",
         icon: <Server className="text-neon-purple" size={32} />
     },
@@ -47,7 +47,7 @@ const cases = [
         description: "Система мгновенного распределения заявок. Данные с лендингов сразу попадают к менеджерам.",
         tags: ["Bitrix24", "Webhooks", "FastAPI"],
         details: "Написан микросервис-прослойка, который ловит данные с форм Tilda/WordPress, проверяет их на дубли и создает сложные сущности в CRM, автоматически назначая ответственного менеджера.",
-        icon: <Server className="text-orange-400" size={32} />
+        icon: <Database className="text-orange-400" size={32} />
     }
 ];
 
@@ -120,7 +120,7 @@ const Cases = () => {
                         {/* Само окно */}
                         <motion.div
                             layoutId={`card-${selectedCase.id}`}
-                            className="relative w-full max-w-2xl bg-ocean-900 border border-white/10 rounded-3xl overflow-hidden shadow-2xl"
+                            className="relative w-full max-w-2xl bg-ocean-900 border border-white/10 rounded-3xl overflow-hidden shadow-2xl max-h-[90vh] overflow-y-auto"
                         >
                             <div className="p-8 md:p-12 relative">
                                 <button
@@ -148,7 +148,6 @@ const Cases = () => {
                                 </div>
 
                                 <button
-                                    onClick={() => setSelectedCase(null)} // В будущем здесь может быть ссылка на реальный кейс
                                     className="w-full py-4 bg-white text-ocean-950 font-bold rounded-xl hover:bg-neon-cyan transition-colors flex items-center justify-center gap-2"
                                 >
                                     Обсудить похожее решение <ExternalLink size={18} />

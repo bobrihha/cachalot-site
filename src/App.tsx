@@ -4,7 +4,8 @@ import SpecGenerator from './components/SpecGenerator';
 import ChatWidget from './components/ChatWidget';
 import Philosophy from './components/Philosophy';
 import Services from './components/Services';
-import Cases from './components/Cases'; // Импортируем новый компонент
+import Cases from './components/Cases';
+import Footer from './components/Footer'; // <-- Импортируем Footer
 
 function App() {
     return (
@@ -32,8 +33,6 @@ function App() {
                 <Hero />
                 <Philosophy />
                 <Services />
-
-                {/* Секция Кейсов */}
                 <Cases />
 
                 {/* Генератор ТЗ */}
@@ -45,9 +44,8 @@ function App() {
 
             </main>
 
-            <footer className="py-10 text-center text-slate-600 text-sm border-t border-white/5 bg-ocean-950 relative z-10">
-                © 2025 Cachalot Digital Lab. Deep Tech Solutions.
-            </footer>
+            {/* Финальный блок контактов */}
+            <Footer />
 
             <ChatWidget />
         </div>
