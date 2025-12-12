@@ -8,17 +8,6 @@ const API_KEY = "AIzaSyA1DeFmtZktqW048cD7iUy-ZSxvBVqjbxY";
 const genAI = new GoogleGenerativeAI(API_KEY);
 
 export const generateProjectSpec = async (userIdea: string): Promise<string> => {
-    // Если ключа нет, вернем заглушку, чтобы сайт не падал при тесте
-    if (API_KEY === "ТВОЙ_API_KEY_ОТ_GEMINI") {
-        return new Promise(resolve => setTimeout(() => resolve(`
-### 🛑 Отсутствует API Key
-Я пока работаю в демо-режиме. Чтобы я мог сгенерировать настоящее ТЗ:
-1. Получите ключ в [Google AI Studio](https://aistudio.google.com/).
-2. Вставьте его в файл \`src/services/geminiService.ts\`.
-
-**Ваша идея была:** ${userIdea}
-        `), 1000));
-    }
 
     const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
 

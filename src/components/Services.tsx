@@ -1,4 +1,4 @@
-import { Bot, Network, Workflow, BrainCircuit } from 'lucide-react';
+import { Bot, Network, Workflow } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const services = [
