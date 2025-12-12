@@ -1,0 +1,90 @@
+import { motion } from 'framer-motion';
+import { ChevronDown, Brain, Database, Layers } from 'lucide-react';
+
+const Hero = () => {
+    return (
+        <section className="relative min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden">
+
+            {/* Декор: Свечение из глубины */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-neon-cyan/10 rounded-full blur-[120px] animate-pulse-slow"></div>
+
+            <div className="z-10 max-w-5xl text-center space-y-8">
+
+                {/* Бейдж "System Online" */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ocean-800/50 border border-neon-cyan/20 text-neon-cyan text-xs font-mono tracking-widest uppercase backdrop-blur-md"
+                >
+                    <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-cyan opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-neon-cyan"></span>
+                    </span>
+                    Cachalot Digital Lab
+                </motion.div>
+
+                {/* Заголовок */}
+                <motion.h1
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="text-5xl md:text-7xl lg:text-9xl font-black text-white tracking-tighter"
+                >
+                    ГЛУБИНА
+                    <span className="text-neon-cyan">.</span>
+                </motion.h1>
+
+                {/* Подзаголовок */}
+                <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                    className="text-lg md:text-2xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed"
+                >
+                    Мы создаем AI-сотрудников и Web3 системы там,<br className="hidden md:block" />
+                    где другие боятся <span className="text-white font-medium">нырять</span>.
+                </motion.p>
+
+                {/* Кнопки */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.6 }}
+                    className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8"
+                >
+                    <button className="px-8 py-4 bg-neon-cyan text-ocean-950 font-bold text-lg rounded-xl hover:bg-cyan-400 transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:scale-105">
+                        Смотреть Кейсы
+                    </button>
+                    <button className="px-8 py-4 border border-slate-700 text-slate-300 font-medium text-lg rounded-xl hover:bg-white/5 hover:border-neon-cyan/50 transition-all backdrop-blur-sm">
+                        Тест-драйв AI
+                    </button>
+                </motion.div>
+            </div>
+
+            {/* Иконки стека внизу */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1, duration: 1 }}
+                className="absolute bottom-12 flex gap-12 text-slate-600"
+            >
+                <div className="flex flex-col items-center gap-2 hover:text-neon-cyan transition-colors"><Brain size={24} /> <span className="text-[10px] tracking-widest uppercase">AI Core</span></div>
+                <div className="flex flex-col items-center gap-2 hover:text-neon-cyan transition-colors"><Database size={24} /> <span className="text-[10px] tracking-widest uppercase">CRM</span></div>
+                <div className="flex flex-col items-center gap-2 hover:text-neon-cyan transition-colors"><Layers size={24} /> <span className="text-[10px] tracking-widest uppercase">Web3</span></div>
+            </motion.div>
+
+            {/* Стрелка вниз */}
+            <motion.div
+                animate={{ y: [0, 10, 0] }}
+                transition={{ repeat: Infinity, duration: 2 }}
+                className="absolute bottom-4 text-slate-500"
+            >
+                <ChevronDown size={24} />
+            </motion.div>
+
+        </section>
+    );
+};
+
+export default Hero;
