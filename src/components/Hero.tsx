@@ -29,9 +29,20 @@ const Hero = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="text-5xl md:text-7xl lg:text-9xl font-black text-white tracking-tighter"
+                    className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-200 tracking-tight"
                 >
-                    ГЛУБИНА
+                    <span className="signal-text">
+                        {'ГЛУБИНА'.split('').map((letter, idx) => (
+                            <span
+                                key={idx}
+                                className="char"
+                                data-char={letter}
+                                style={{ animationDelay: `${-idx * 0.27}s` }}
+                            >
+                                {letter}
+                            </span>
+                        ))}
+                    </span>
                     <span className="text-neon-cyan">.</span>
                 </motion.h1>
 
@@ -42,8 +53,8 @@ const Hero = () => {
                     transition={{ duration: 0.8, delay: 0.4 }}
                     className="text-lg md:text-2xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed"
                 >
-                    Мы создаем AI-сотрудников и Web3 системы там,<br className="hidden md:block" />
-                    где другие боятся <span className="text-white font-medium">нырять</span>.
+                    Интеллектуальная автоматизация бизнеса. Создаём AI‑сотрудников и берём на себя процессы,<br className="hidden md:block" />
+                    куда другие не ныряют.
                 </motion.p>
 
                 {/* Кнопки */}

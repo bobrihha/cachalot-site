@@ -13,3 +13,73 @@ body {
 ::-webkit-scrollbar-track { background: #020617; }
 ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: #06b6d4; }
+
+/* Эффект мерцания и затуханий для слова "Глубина" */
+@keyframes signal-fade {
+  0% { opacity: 0.9; filter: blur(0); }
+  6% { opacity: 0.35; filter: blur(0.5px); }
+  12% { opacity: 0.95; filter: blur(0); }
+  25% { opacity: 0.5; }
+  40% { opacity: 0.8; }
+  60% { opacity: 0.95; }
+  78% { opacity: 0.4; filter: blur(0.4px); }
+  90% { opacity: 1; filter: blur(0); }
+  100% { opacity: 0.85; }
+}
+
+@keyframes signal-shift {
+  0% { transform: translate(0, 0); }
+  15% { transform: translate(-1px, 0); }
+  30% { transform: translate(1px, 0); }
+  45% { transform: translate(-0.5px, 0); }
+  60% { transform: translate(0.5px, 0); }
+  75% { transform: translate(-1px, 0); }
+  100% { transform: translate(0, 0); }
+}
+
+.signal-text {
+  display: inline-flex;
+  gap: 0.02em;
+}
+
+.signal-text .char {
+  position: relative;
+  display: inline-block;
+  color: rgba(203, 213, 245, 0.45); /* базовый тусклый слой */
+  text-shadow: 0 0 10px rgba(6, 182, 212, 0.12);
+}
+
+.signal-text .char::after {
+  content: attr(data-char);
+  position: absolute;
+  inset: 0;
+  color: #e2e8f0; /* яркий слой */
+  opacity: 0.9;
+  animation: signal-scan 13s infinite;
+  filter: contrast(1.05);
+}
+
+.signal-text .char:nth-child(3n)::after { animation-duration: 12s; }
+.signal-text .char:nth-child(4n)::after { animation-duration: 14s; }
+.signal-text .char:nth-child(5n)::after { animation-duration: 12.6s; }
+
+@keyframes signal-scan {
+  /* 0–20% (~2–3 сек) — интенсивные провалы */
+  0% { clip-path: inset(0 0 0 0); }
+  2% { clip-path: polygon(0 0, 100% 0, 100% 38%, 0 42%); }
+  4% { clip-path: inset(18% 0 0 0); }
+  6% { clip-path: inset(0 0 0 0); }
+  8% { clip-path: polygon(0 0, 100% 0, 100% 24%, 0 28%, 0 76%, 100% 72%, 100% 100%, 0 100%); }
+  10% { clip-path: inset(0 0 26% 0); }
+  12% { clip-path: inset(0 0 0 0); }
+  14% { clip-path: polygon(0 0, 100% 0, 100% 18%, 0 22%, 0 64%, 100% 60%, 100% 100%, 0 100%); }
+  16% { clip-path: inset(12% 0 14% 0); }
+  18% { clip-path: inset(0 0 0 0); }
+  20% { clip-path: inset(0 0 0 0); }
+
+  /* 20–95% (~10 сек) — стабильный сигнал */
+  95% { clip-path: inset(0 0 0 0); }
+
+  /* Конец цикла — плавное закрытие/открытие перед новой серией */
+  100% { clip-path: inset(0 0 0 0); }
+}
